@@ -1,11 +1,11 @@
 import { TextStyle, ViewStyle } from "react-native";
-import { StyleUtilityHelper } from "src/helpers/style_utility_helper";
+import { applyStyleUtilities } from "src/helpers/style_utility_helper";
 
 describe("StyleUtilityHelper", () => {
   describe("applyStyleUtilities", () => {
     it("translates tailwind utilities correctly", () => {
       expect(
-        StyleUtilityHelper.applyStyleUtilities([
+        applyStyleUtilities([
           "bg-primary",
           "border",
           "border-gray200",
@@ -21,12 +21,7 @@ describe("StyleUtilityHelper", () => {
       } as ViewStyle);
 
       expect(
-        StyleUtilityHelper.applyStyleUtilities([
-          "italic",
-          "font-bold",
-          "text-lg",
-          "mb-3",
-        ])
+        applyStyleUtilities(["italic", "font-bold", "text-lg", "mb-3"])
       ).toEqual({
         fontStyle: "italic",
         fontWeight: "bold",

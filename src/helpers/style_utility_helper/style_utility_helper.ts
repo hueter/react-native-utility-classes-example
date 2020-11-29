@@ -850,31 +850,17 @@ const utilityNameMap: UtilityNameFlexMap &
   },
 };
 
-export class StyleUtilityHelper {
-  static applyStyleUtilities<T extends FlexStyle | TextStyle | ViewStyle>(
-    utilities: NonNullable<UtilProp["util"]>
-  ): T {
-    return utilities.filter(isTruthy).reduce((accumulator, utility) => {
-      let currentUtility = {};
-      if (SpacerSet.has(utility as Spacer)) {
-        currentUtility = SpacerUtilityHelper.applySpacer(utility as Spacer);
-      } else {
-        currentUtility = utilityNameMap[utility as UtilityName];
-      }
-      return { ...accumulator, ...currentUtility };
-    }, {}) as T;
-  }
-}
-
 /**
- * Helper function to apply utils to inline style props
+ * A helper that converts utility class names into inline styles.
+ * @param utilities - An array of utility class names (strings). Also accepts falsy values to be filtered out
  */
-export function util<T extends FlexStyle | TextStyle | ViewStyle>(
-  ...utilities: Array<UtilityName | Spacer | Falsy>
-): T {
-  return StyleUtilityHelper.applyStyleUtilities(utilities);
-}
-
-export function concatUtils(...utils: Array<Util>): Util {
-  return utils.flat();
+export function applyStyleUtilities<
+  T extends FlexStyle | TextStyle | ViewStyle
+>(utilities: Util): T {
+  return utilities?.filter(isTruthy).reduce((accumulator, utility) => {
+    const currentUtility = SpacerSet.has(utility as Spacer)
+      ? SpacerUtilityHelper.applySpacer(utility as Spacer) // handle spacers separately
+      : utilityNameMap[utility as UtilityName];
+    return { ...accumulator, ...currentUtility };
+  }, {}) as T;
 }
