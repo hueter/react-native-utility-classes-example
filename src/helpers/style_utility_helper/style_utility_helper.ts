@@ -2,11 +2,7 @@ import { FlexStyle, TextStyle, ViewStyle } from "react-native";
 import { theme } from "src/theme";
 import { Falsy } from "src/types";
 import { isTruthy } from "src/type_guards/is_truthy";
-import {
-  Spacer,
-  SpacerSet,
-  SpacerUtilityHelper,
-} from "src/helpers/spacer_utility_helper";
+import { applySpacer, Spacer, SpacerSet } from "src/helpers/spacer_utility_helper";
 
 type TextUtils =
   | "font-bold"
@@ -851,7 +847,7 @@ const utilityNameMap: UtilityNameFlexMap &
 };
 
 /**
- * A helper that converts utility class names into inline styles.
+ * A helper that converts an array of utility class names into inline styles.
  * @param utilities - An array of utility class names (strings). Also accepts falsy values to be filtered out
  */
 export function applyStyleUtilities<
@@ -859,8 +855,18 @@ export function applyStyleUtilities<
 >(utilities: Util): T {
   return utilities?.filter(isTruthy).reduce((accumulator, utility) => {
     const currentUtility = SpacerSet.has(utility as Spacer)
-      ? SpacerUtilityHelper.applySpacer(utility as Spacer) // handle spacers separately
+      ? applySpacer(utility as Spacer) // handle spacers separately
       : utilityNameMap[utility as UtilityName];
     return { ...accumulator, ...currentUtility };
   }, {}) as T;
+}
+
+/**
+ * A helper that converts a list of utility class names into inline styles.
+ * @param utilities - A comma-separated list of utility class names
+ */
+export function util<T extends FlexStyle | TextStyle | ViewStyle>(
+  ...utilities: Array<UtilityName | Spacer | Falsy>
+): T {
+  return applyStyleUtilities(utilities);
 }

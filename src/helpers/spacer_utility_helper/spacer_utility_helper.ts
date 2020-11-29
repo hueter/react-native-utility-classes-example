@@ -309,37 +309,35 @@ export const horizontalSpacerSizeMap: SpacerSizeMap = {
   auto: "auto",
 };
 
-export class SpacerUtilityHelper {
-  static applySpacer = (spacer: Spacer): ViewStyle => {
-    const [property, size] = spacer.split("-");
-    const validSize = size as Size;
+export const applySpacer = (spacer: Spacer): ViewStyle => {
+  const [property, size] = spacer.split("-");
+  const validSize = size as Size;
 
-    let computedProperty: MarginViewStyleProperty | PaddingViewStyleProperty;
-    let computedSize: number | "auto";
+  let computedProperty: MarginViewStyleProperty | PaddingViewStyleProperty;
+  let computedSize: number | "auto";
 
-    if (property.includes("m")) {
-      const marginResult = marginPropertyMap[property as MarginProperty];
-      computedProperty = marginResult.property;
-      computedSize =
-        marginResult.verticalOrHorizontal === "vertical"
-          ? verticalSpacerSizeMap[validSize]
-          : horizontalSpacerSizeMap[validSize];
-    } else {
-      const paddingResult = paddingPropertyMap[property as PaddingProperty];
-      computedProperty = paddingResult.property;
-      computedSize =
-        paddingResult.verticalOrHorizontal === "vertical"
-          ? verticalSpacerSizeMap[validSize]
-          : horizontalSpacerSizeMap[validSize];
-    }
-    return {
-      [computedProperty]: computedSize,
-    };
+  if (property.includes("m")) {
+    const marginResult = marginPropertyMap[property as MarginProperty];
+    computedProperty = marginResult.property;
+    computedSize =
+      marginResult.verticalOrHorizontal === "vertical"
+        ? verticalSpacerSizeMap[validSize]
+        : horizontalSpacerSizeMap[validSize];
+  } else {
+    const paddingResult = paddingPropertyMap[property as PaddingProperty];
+    computedProperty = paddingResult.property;
+    computedSize =
+      paddingResult.verticalOrHorizontal === "vertical"
+        ? verticalSpacerSizeMap[validSize]
+        : horizontalSpacerSizeMap[validSize];
+  }
+  return {
+    [computedProperty]: computedSize,
   };
+};
 
-  static applySpacers = (spacers: Array<Spacer | Falsy>): ViewStyle => {
-    return spacers.filter(isTruthy).reduce((accumulator, spacer) => {
-      return { ...accumulator, ...SpacerUtilityHelper.applySpacer(spacer) };
-    }, {});
-  };
-}
+export const applySpacers = (spacers: Array<Spacer | Falsy>): ViewStyle => {
+  return spacers.filter(isTruthy).reduce((accumulator, spacer) => {
+    return { ...accumulator, ...applySpacer(spacer) };
+  }, {});
+};
