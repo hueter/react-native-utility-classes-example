@@ -8,7 +8,7 @@ describe("StyleUtilityHelper", () => {
         applyStyleUtilities([
           "bg-primary",
           "border",
-          "border-gray200",
+          "border-gray-200",
           "rounded",
           "p-5",
         ])

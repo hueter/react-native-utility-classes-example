@@ -2,7 +2,11 @@ import { FlexStyle, TextStyle, ViewStyle } from "react-native";
 import { theme } from "src/theme";
 import { Falsy } from "src/types";
 import { isTruthy } from "src/type_guards/is_truthy";
-import { applySpacer, Spacer, SpacerSet } from "src/helpers/spacer_utility_helper";
+import {
+  applySpacer,
+  Spacer,
+  SpacerSet,
+} from "src/helpers/spacer_utility_helper";
 
 type TextUtils =
   | "font-bold"
@@ -30,16 +34,16 @@ type TextUtils =
 
 type TextColorUtils =
   | "text-danger"
-  | "text-gray50"
-  | "text-gray100"
-  | "text-gray200"
-  | "text-gray300"
-  | "text-gray400"
-  | "text-gray500"
-  | "text-gray600"
-  | "text-gray700"
-  | "text-gray800"
-  | "text-gray900"
+  | "text-gray-50"
+  | "text-gray-100"
+  | "text-gray-200"
+  | "text-gray-300"
+  | "text-gray-400"
+  | "text-gray-500"
+  | "text-gray-600"
+  | "text-gray-700"
+  | "text-gray-800"
+  | "text-gray-900"
   | "text-primary"
   | "text-secondary"
   | "text-success"
@@ -48,16 +52,16 @@ type TextColorUtils =
 
 type BackgroundColorUtilities =
   | "bg-danger"
-  | "bg-gray50"
-  | "bg-gray100"
-  | "bg-gray200"
-  | "bg-gray300"
-  | "bg-gray400"
-  | "bg-gray500"
-  | "bg-gray600"
-  | "bg-gray700"
-  | "bg-gray800"
-  | "bg-gray900"
+  | "bg-gray-50"
+  | "bg-gray-100"
+  | "bg-gray-200"
+  | "bg-gray-300"
+  | "bg-gray-400"
+  | "bg-gray-500"
+  | "bg-gray-600"
+  | "bg-gray-700"
+  | "bg-gray-800"
+  | "bg-gray-900"
   | "bg-primary"
   | "bg-secondary"
   | "bg-success"
@@ -67,16 +71,16 @@ type BackgroundColorUtilities =
 
 type BorderColorUtilities =
   | "border-danger"
-  | "border-gray50"
-  | "border-gray100"
-  | "border-gray200"
-  | "border-gray300"
-  | "border-gray400"
-  | "border-gray500"
-  | "border-gray600"
-  | "border-gray700"
-  | "border-gray800"
-  | "border-gray900"
+  | "border-gray-50"
+  | "border-gray-100"
+  | "border-gray-200"
+  | "border-gray-300"
+  | "border-gray-400"
+  | "border-gray-500"
+  | "border-gray-600"
+  | "border-gray-700"
+  | "border-gray-800"
+  | "border-gray-900"
   | "border-primary"
   | "border-secondary"
   | "border-success"
@@ -336,35 +340,35 @@ const utilityNameMap: UtilityNameFlexMap &
   "bg-success": {
     backgroundColor: theme.colors.success,
   },
-  "bg-gray50": {
-    backgroundColor: theme.colors.gray300,
+  "bg-gray-50": {
+    backgroundColor: theme.colors["gray-50"],
   },
-  "bg-gray100": {
-    backgroundColor: theme.colors.gray300,
+  "bg-gray-100": {
+    backgroundColor: theme.colors["gray-100"],
   },
-  "bg-gray200": {
-    backgroundColor: theme.colors.gray300,
+  "bg-gray-200": {
+    backgroundColor: theme.colors["gray-200"],
   },
-  "bg-gray300": {
-    backgroundColor: theme.colors.gray300,
+  "bg-gray-300": {
+    backgroundColor: theme.colors["gray-300"],
   },
-  "bg-gray400": {
-    backgroundColor: theme.colors.gray400,
+  "bg-gray-400": {
+    backgroundColor: theme.colors["gray-400"],
   },
-  "bg-gray500": {
-    backgroundColor: theme.colors.gray500,
+  "bg-gray-500": {
+    backgroundColor: theme.colors["gray-500"],
   },
-  "bg-gray600": {
-    backgroundColor: theme.colors.gray600,
+  "bg-gray-600": {
+    backgroundColor: theme.colors["gray-600"],
   },
-  "bg-gray700": {
-    backgroundColor: theme.colors.gray700,
+  "bg-gray-700": {
+    backgroundColor: theme.colors["gray-700"],
   },
-  "bg-gray800": {
-    backgroundColor: theme.colors.gray800,
+  "bg-gray-800": {
+    backgroundColor: theme.colors["gray-800"],
   },
-  "bg-gray900": {
-    backgroundColor: theme.colors.gray800,
+  "bg-gray-900": {
+    backgroundColor: theme.colors["gray-800"],
   },
   "bg-primary": {
     backgroundColor: theme.colors.primary,
@@ -385,35 +389,35 @@ const utilityNameMap: UtilityNameFlexMap &
   "text-success": {
     color: theme.colors.success,
   },
-  "text-gray50": {
-    color: theme.colors.gray50,
+  "text-gray-50": {
+    color: theme.colors["gray-50"],
   },
-  "text-gray100": {
-    color: theme.colors.gray100,
+  "text-gray-100": {
+    color: theme.colors["gray-100"],
   },
-  "text-gray200": {
-    color: theme.colors.gray200,
+  "text-gray-200": {
+    color: theme.colors["gray-200"],
   },
-  "text-gray300": {
-    color: theme.colors.gray300,
+  "text-gray-300": {
+    color: theme.colors["gray-300"],
   },
-  "text-gray400": {
-    color: theme.colors.gray400,
+  "text-gray-400": {
+    color: theme.colors["gray-400"],
   },
-  "text-gray500": {
-    color: theme.colors.gray500,
+  "text-gray-500": {
+    color: theme.colors["gray-500"],
   },
-  "text-gray600": {
-    color: theme.colors.gray600,
+  "text-gray-600": {
+    color: theme.colors["gray-600"],
   },
-  "text-gray700": {
-    color: theme.colors.gray700,
+  "text-gray-700": {
+    color: theme.colors["gray-700"],
   },
-  "text-gray800": {
-    color: theme.colors.gray800,
+  "text-gray-800": {
+    color: theme.colors["gray-800"],
   },
-  "text-gray900": {
-    color: theme.colors.gray900,
+  "text-gray-900": {
+    color: theme.colors["gray-900"],
   },
   "text-primary": {
     color: theme.colors.primary,
@@ -520,35 +524,35 @@ const utilityNameMap: UtilityNameFlexMap &
   "border-success": {
     borderColor: theme.colors.success,
   },
-  "border-gray50": {
-    borderColor: theme.colors.gray50,
+  "border-gray-50": {
+    borderColor: theme.colors["gray-50"],
   },
-  "border-gray100": {
-    borderColor: theme.colors.gray100,
+  "border-gray-100": {
+    borderColor: theme.colors["gray-100"],
   },
-  "border-gray200": {
-    borderColor: theme.colors.gray200,
+  "border-gray-200": {
+    borderColor: theme.colors["gray-200"],
   },
-  "border-gray300": {
-    borderColor: theme.colors.gray300,
+  "border-gray-300": {
+    borderColor: theme.colors["gray-300"],
   },
-  "border-gray400": {
-    borderColor: theme.colors.gray400,
+  "border-gray-400": {
+    borderColor: theme.colors["gray-400"],
   },
-  "border-gray500": {
-    borderColor: theme.colors.gray500,
+  "border-gray-500": {
+    borderColor: theme.colors["gray-500"],
   },
-  "border-gray600": {
-    borderColor: theme.colors.gray600,
+  "border-gray-600": {
+    borderColor: theme.colors["gray-600"],
   },
-  "border-gray700": {
-    borderColor: theme.colors.gray700,
+  "border-gray-700": {
+    borderColor: theme.colors["gray-700"],
   },
-  "border-gray800": {
-    borderColor: theme.colors.gray800,
+  "border-gray-800": {
+    borderColor: theme.colors["gray-800"],
   },
-  "border-gray900": {
-    borderColor: theme.colors.gray900,
+  "border-gray-900": {
+    borderColor: theme.colors["gray-900"],
   },
   "border-primary": {
     borderColor: theme.colors.primary,
